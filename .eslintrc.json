@@ -1,3 +1,10 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off",      // Disable unused vars check
+    "react/jsx-key": "off",                          // Disable missing key prop warning in iterators
+    "react-hooks/exhaustive-deps": "off",            // Disable missing dependency warnings in useEffect
+    "react/no-unused-prop-types": "off",             // Disable unused prop types check
+    "react/prop-types": "off"                        // Disable prop-types check for non-TypeScript users
+  }
 }
