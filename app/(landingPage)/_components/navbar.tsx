@@ -6,7 +6,7 @@ import { useScrollTop } from '@/hooks/use-scroll-top';
 import { cn } from '@/lib/utils';
 import { SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react';
 import { useConvexAuth } from 'convex/react';
-import { Ghost, SparkleIcon } from 'lucide-react';
+import { SparkleIcon } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 

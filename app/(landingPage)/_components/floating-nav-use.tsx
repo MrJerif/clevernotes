@@ -2,7 +2,6 @@
 import React from "react";
 import { FloatingNav } from "./floating-navbar";
 import { ContainerScroll } from "./container-scroll-animation";
-import Image from "next/image";
 import { StarsBackground } from "./stars-bg";
 import { ShootingStars } from "./shooting-stars";
 export function FloatingNavUse() {

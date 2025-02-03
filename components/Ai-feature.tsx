@@ -22,22 +22,6 @@ interface AiFeatureProps {
 export const AiFeature = ({ isOpen, onClose }: AiFeatureProps) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const { user } = useUser();
-  if (!user) {
-    return <div
-      className={cn('ml-[92vw] text-muted-foreground',
-        isMobile && 'ml-[75vw]'
-      )}>
-      <div>
-        login to use ai
-      </div>
-      <SignInButton mode='modal'>
-        <Button variant="secondary" size="sm">
-          Log in
-        </Button>
-      </SignInButton>
-    </div>
-  }
-
   const chatRef = useRef<ElementRef<"div">>(null);
   const resizeRef = useRef<ElementRef<"div">>(null);
 
@@ -74,13 +58,13 @@ export const AiFeature = ({ isOpen, onClose }: AiFeatureProps) => {
       }
     }
   }, [isOpen, isMobile]);
- 
+
   useEffect(() => {
-    if (user?.id) {
-      createTokens({
-        userId: user.id
-      });
-    }
+    if (!user?.id) return;
+    createTokens({
+      userId: user.id
+    });
+
   }, [user?.id]);
 
   useEffect(() => {
@@ -94,6 +78,22 @@ export const AiFeature = ({ isOpen, onClose }: AiFeatureProps) => {
     documentId: params.documentId as Id<"documents">
   });
   const documentContent = doc?.content;
+
+  if (!user) {
+    return <div
+      className={cn('ml-[92vw] text-muted-foreground',
+        isMobile && 'ml-[75vw]'
+      )}>
+      <div>
+        login to use ai
+      </div>
+      <SignInButton mode='modal'>
+        <Button variant="secondary" size="sm">
+          Log in
+        </Button>
+      </SignInButton>
+    </div>
+  }
 
   // Function for Search Online
   const handleSearchOnline = () => {
