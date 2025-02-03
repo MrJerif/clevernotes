@@ -11,6 +11,12 @@ import Link from "next/link";
 import { SignInButton, UserButton } from "@clerk/clerk-react";
 import { useConvexAuth } from "convex/react";
 
+type NavItem = {
+  link: string;
+  name: string;
+  icon?: JSX.Element;
+};
+
 export const FloatingNav = ({
   navItems,
   className,
@@ -63,7 +69,7 @@ export const FloatingNav = ({
           className
         )}
       >
-        {navItems.map((navItem: any, idx: number) => (
+        {navItems.map((navItem: NavItem, idx: number) => (
           <Link
             key={`link=${idx}`}
             href={navItem.link}

@@ -5,7 +5,7 @@ import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { cn } from "@/lib/utils";
 import { useMutation, useQuery } from "convex/react";
-import { ChevronDown, ChevronRight, FileIcon, FolderCheckIcon, GlobeIcon, LucideIcon, MoreHorizontal, Plus, Trash } from "lucide-react";
+import { ChevronDown, FileIcon, FolderCheckIcon, LucideIcon, MoreHorizontal, Plus, Trash } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Item } from "./item";
@@ -145,7 +145,7 @@ export function FolderItem({ id, folderIcon, active, folderExpanded, level = 0, 
             // let did = document._id
             if (document.folderId === id) {
                 // Archive document using documentId
-                let id = document._id
+                const id = document._id
                 archiveNotes({ id });
             }
         })

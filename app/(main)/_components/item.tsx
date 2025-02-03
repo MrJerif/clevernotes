@@ -1,8 +1,6 @@
-
-'use client'
+'use client';
 
 import { useRouter } from "next/navigation"
-
 import { Skeleton } from "@/components/ui/skeleton"
 import { api } from "@/convex/_generated/api"
 import { Id } from "@/convex/_generated/dataModel"
@@ -16,11 +14,8 @@ import { useMutation, useQuery } from "convex/react"
 import { ChevronDown, ChevronRight, LucideIcon, MoreHorizontal, Plus, ScissorsIcon, Trash } from "lucide-react"
 import { toast } from "sonner"
 import { useUser } from "@clerk/clerk-react"
-import { FolderItem } from "./folder-item"
-import { useMediaQuery } from "usehooks-ts"
-import { useState } from "react"
+import { FolderItem } from "./folder-item";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-
 
 
 interface ItemProps {
@@ -44,7 +39,6 @@ export function Item({ id, label, onClick, icon: Icon, active, documentIcon, isS
   const create = useMutation(api.documents.create);
   const archive = useMutation(api.documents.archive);
   const move = useMutation(api.documents.moveNotes);
-  const isMobile = useMediaQuery(" (max-width: 786px) ");
 
   const onArchive = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     event.stopPropagation()

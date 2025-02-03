@@ -7,7 +7,6 @@ import { ImageIcon, Smile, X } from "lucide-react";
 import React, { ElementRef, useRef, useState } from "react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { title } from "process";
 import TextareaAutosize from 'react-textarea-autosize';
 import { useCoverImage } from "@/hooks/use-cover-image";
 

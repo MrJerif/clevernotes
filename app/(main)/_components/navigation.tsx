@@ -283,7 +283,7 @@ const Navigation = ({ folderId }: NavigationProps) => {
                         isCollapsed={isCollapsed}
                         onResetWidth={resetWidth}
                         onCollapse={collapse}
-                        onAiResize={handleAiResize}
+                        // onAiResize={handleAiResize}
                     />
                 ) : (
                     <nav className='bg-transparent px-3 py-2 w-full'>

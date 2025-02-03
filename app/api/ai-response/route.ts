@@ -22,7 +22,7 @@ export async function POST(req: Request) {
 
   if (req.method === "POST") {
     const body = await req.json();
-    const { userQuestion, documentContent, fileUrl, searchOnline, fileNames } = body;
+    const { userQuestion, documentContent, fileUrl, searchOnline } = body;
 
     // Basic validation
     if (!userQuestion) {
@@ -71,7 +71,7 @@ export async function POST(req: Request) {
     }
 
     let pdfTextContent = "";
-    let splitterList: string[] = [];
+    const splitterList: string[] = [];
 
     // File process 
     if (fileUrl && fileUrl.length > 0) {
@@ -109,7 +109,7 @@ export async function POST(req: Request) {
     }
 
     try {
-      let chatHistory = [];
+      const chatHistory = [];
       chatHistory.push({
         role: "user",
         parts: [{ text: `My Question is: ${userQuestion} ` },
@@ -136,8 +136,8 @@ export async function POST(req: Request) {
         history: chatHistory,
       });
 
-      let result = await response.sendMessage("");
-      let responseText = result.response.text();
+      const result = await response.sendMessage("");
+      const responseText = result.response.text();
       // Clean up the response
       // responseText = responseText.replace(/\\n/g, ' ').replace(/\\"/g, '"').replace(/\\/g, '');
 

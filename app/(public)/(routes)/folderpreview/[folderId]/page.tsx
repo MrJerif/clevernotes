@@ -6,7 +6,7 @@ import { Spinner } from '@/components/spinner';
 import { Skeleton } from '@/components/ui/skeleton';
 import { api } from '@/convex/_generated/api';
 import { Id } from '@/convex/_generated/dataModel';
-import { useMutation, useQuery } from 'convex/react';
+import { useQuery } from 'convex/react';
 import { ChevronDown, FileIcon, FolderCheckIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React from 'react';

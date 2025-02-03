@@ -17,7 +17,7 @@ interface DocumentListProps {
     folderId?: Id<"folders">;
 }
 
-export const DocumentList = ({ parentDocumentId, level = 0, folderId }: DocumentListProps) => {
+export const DocumentList = ({ parentDocumentId, level = 0 }: DocumentListProps) => {
     const params = useParams();
     const router = useRouter();
     const [expanded, setExpanded] = useState<Record<string, boolean>>({});

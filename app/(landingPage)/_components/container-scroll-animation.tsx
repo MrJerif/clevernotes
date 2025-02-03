@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { ReactNode, useRef } from "react";
 import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 
 export const ContainerScroll = ({
@@ -54,7 +54,12 @@ export const ContainerScroll = ({
   );
 };
 
-export const Header = ({ translate, titleComponent }: any) => {
+interface HeaderProps {
+  translate?: string | number | MotionValue<number> ;  // Assuming translate is either string or number
+  titleComponent?: ReactNode;   // Title is a JSX element or a string
+}
+
+export const Header = ({ translate, titleComponent }: HeaderProps) => {
   return (
     <motion.div
       style={{

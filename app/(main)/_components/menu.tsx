@@ -37,12 +37,6 @@ interface MDContentNodeProps {
     children?: MDContentNodeProps[];
 };
 
-interface ContentBlockProps {
-    type: "heading" | "paragraph" | "numberedListItem" | "bulletListItem" | "checkListItem";
-    value: string | string[]
-};
-
-
 export const Menu = ({ documentId, folderId }: MenuProps) => {
     const router = useRouter();
     const { user } = useUser();
@@ -263,7 +257,7 @@ export const Menu = ({ documentId, folderId }: MenuProps) => {
             });
         };
 
-        contentArray.forEach((node, index) => {
+        contentArray.forEach((node) => {
             switch (node.type) {
                 case "heading": {
                     const headingLevel = node.props?.level || 1;
@@ -347,7 +341,7 @@ export const Menu = ({ documentId, folderId }: MenuProps) => {
                     addTextToPDF(separatorRow);
 
                     if (Array.isArray(node.children)) {
-                        node.children.forEach((row, rowIndex) => {
+                        node.children.forEach((row) => {
                             const rowData = Array.isArray(row.content)
                                 ? row.content.map((c) => c.text).join(" | ")
                                 : "";

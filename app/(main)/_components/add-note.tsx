@@ -1,16 +1,14 @@
-import React, { useState } from 'react'
-import { Popover, PopoverContent, PopoverTrigger } from '../../../components/ui/popover'
-import { Item } from './item'
-import { FolderCheckIcon, FolderClosedIcon, PlusCircle, Target } from 'lucide-react'
-import { Button } from '../../../components/ui/button'
-import { useMediaQuery } from 'usehooks-ts'
-import { useMutation, useQueries, useQuery } from 'convex/react'
-import { api } from '@/convex/_generated/api'
-import { toast } from 'sonner'
-import { IconPicker } from '@/components/icon-picker'
-import { Id } from '@/convex/_generated/dataModel'
-import { FolderItem } from './folder-item'
-import { useRouter } from 'next/navigation'
+import React from 'react';
+import { Popover, PopoverContent, PopoverTrigger } from '../../../components/ui/popover';
+import { Item } from './item';
+import { PlusCircle } from 'lucide-react';
+import { useMediaQuery } from 'usehooks-ts';
+import { useMutation, useQuery } from 'convex/react';
+import { api } from '@/convex/_generated/api';
+import { toast } from 'sonner';
+import { Id } from '@/convex/_generated/dataModel';
+import { FolderItem } from './folder-item';
+import { useRouter } from 'next/navigation';
 
 interface AddNoteProps {
     folderId?: Id<"folders">
@@ -95,6 +93,13 @@ const AddNote = ({ folderId }: AddNoteProps) => {
                             No folders!
                         </div>
                     )}
+                </div>
+                <div>
+                    <Item
+                        label='Create a seperate note'
+                        icon={PlusCircle}
+                        onClick={seperateNote}
+                    />
                 </div>
             </PopoverContent>
         </Popover>

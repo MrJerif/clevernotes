@@ -17,14 +17,12 @@ interface NavbarProps {
     isCollapsed: boolean;
     onResetWidth: () => void;
     onCollapse: () => void;
-    onAiResize: (width: number) => void;
 };
 
 export const Navbar = ({
     isCollapsed,
     onResetWidth,
     onCollapse,
-    onAiResize
 }: NavbarProps) => {
     const [isAIChatOpen, setIsAIChatOpen] = useState(false);
     // const [navbarWidth, setNavbarWidth] = useState("100%");

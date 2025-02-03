@@ -23,7 +23,6 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
     const isMobile = useMediaQuery(" (max-width: 786px) ");
 
     const [isCollapsed, setIsCollapsed] = useState(isMobile);
-    const [mainContentWidth, setMainContentWidth] = useState("100%");
 
     const document = useQuery(api.documents.getPublishedDoc, {
         documentId: params.documentId

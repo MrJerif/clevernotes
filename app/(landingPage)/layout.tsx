@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navbar } from './_components/navbar';
-import Footer from './_components/footer';
 import { Metadata } from 'next';
 
 export const meta: Metadata = {

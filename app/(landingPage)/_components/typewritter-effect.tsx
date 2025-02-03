@@ -26,7 +26,7 @@ export const TypewriterEffect = ({
     const [displayedText, setDisplayedText] = useState<string[]>([]);
     const [isTyping, setIsTyping] = useState(true); // Tracks typing or backspacing
 
-    const [scope, animate] = useAnimate();
+    const [scope] = useAnimate();
 
     useEffect(() => {
         const typeEffect = async () => {

@@ -25,25 +25,6 @@ export const PublishFolder = ({ initialData, id, folder }: PublishFolderProps) =
     const [copied, setCopied] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Publish notes present in the published folder
-    const onPublishNotes = () => {
-        // initialData?.forEach(element => {
-        //     if (initialData?.folderId === id) {
-        //         const promise = update({
-        //             id: initialData._id,
-        //             isPublished: true,
-        //         })
-        //     }
-        // });
-
-        if (initialData?.folderId === id) {
-            const promise = update({
-                id: initialData._id,
-                isPublished: true,
-            })
-        }
-    }
-
     // Function to publish note
     const onPublish = () => {
         setIsSubmitting(true);

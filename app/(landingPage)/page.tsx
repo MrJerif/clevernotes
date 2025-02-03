@@ -1,4 +1,4 @@
-import Image from "next/image";
+"use client";
 import { Heading } from "./_components/heading";
 import { ShootingStars } from "./_components/shooting-stars";
 import { StarsBackground } from "./_components/stars-bg";
