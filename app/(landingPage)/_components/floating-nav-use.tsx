@@ -45,16 +45,15 @@ const DummyContent = () => {
                 }
             >
                 <video
-                    src='/mainvideo.webm'
-                    height='720'
-                    width='1400'
                     className="mx-auto rounded-2xl object-fill h-[99%] object-left-top"
-                    // draggable={false}
-                    // preload="autoPlay"
+                    preload="metadata"
                     autoPlay
                     loop
                     playsInline
-                />
+                    >
+                        <source src='/mainvideo.webm' type="video/webm"/>
+                        <source src='/mainvideo.mp4' type="video/mp4"/>
+                </video>
             </ContainerScroll>
         </div>
     );
