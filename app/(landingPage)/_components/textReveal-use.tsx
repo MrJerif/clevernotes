@@ -16,7 +16,7 @@ export function TextRevealCardUse() {
             <div className="flex items-center justify-center rounded-2xl w-full">
                 <TextRevealCard
                     text="Pay only for the words you use."
-                    revealText="Lowest Stripe Price"
+                    revealText="Fees? Practically Zero."
                 >
                     <TextRevealCardTitle>
                         Token-based pricing powered by Stripe..

@@ -1,6 +1,8 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export function Features() {
     return (
@@ -55,7 +57,7 @@ export function Features() {
                             Seamless Collaboration
                         </h1>
                         <p className="font-normal text-base dark:text-gray-50 text-zinc-800 relative my-4">
-                            Share notes with colleagues, friends, or clients via unique links.
+                            Share notes and folders with colleagues, friends, or clients via unique links.
                         </p>
                     </div>
                 </div>
@@ -118,7 +120,7 @@ export function Features() {
             </div>
 
             {/* 3rd Row */}
-            <div className="flex flex-col md:flex-row gap-4 mb-10">
+            <div className="flex flex-col md:flex-row gap-4">
                 <div className="max-w-lg w-full border rounded-md relative group hover:bg-purple-500 backdrop-blur-md backdrop-saturate-150"
                     onMouseEnter={() => {
                         const videoElement = document.querySelector('.video-hover5') as HTMLVideoElement;
@@ -176,6 +178,12 @@ export function Features() {
                     </div>
                 </div>
             </div>
+
+            <Button asChild className="mb-10">
+                <Link href="https://github.com/MrJerif/clevernotes/tree/main">
+                    Under the Hood
+                </Link>
+            </Button>
         </>
     );
 }

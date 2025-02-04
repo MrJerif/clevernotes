@@ -11,7 +11,7 @@ import { useParams } from 'next/navigation';
 import ShowFiles from './ui/show-files';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 import { Button } from './ui/button';
-import { SignInButton, useUser } from '@clerk/clerk-react';
+import { useUser } from '@clerk/clerk-react';
 import UsageTrack from '@/app/(main)/_components/usage-track';
 
 interface AiFeatureProps {
@@ -79,21 +79,21 @@ export const AiFeature = ({ isOpen, onClose }: AiFeatureProps) => {
   });
   const documentContent = doc?.content;
 
-  if (!user) {
-    return <div
-      className={cn('ml-[92vw] text-muted-foreground',
-        isMobile && 'ml-[75vw]'
-      )}>
-      <div>
-        login to use ai
-      </div>
-      <SignInButton mode='modal'>
-        <Button variant="secondary" size="sm">
-          Log in
-        </Button>
-      </SignInButton>
-    </div>
-  }
+  // if (!user) {
+  //   return <div
+  //     className={cn('ml-[92vw] text-muted-foreground',
+  //       isMobile && 'ml-[75vw]'
+  //     )}>
+  //     <div>
+  //       login to use ai
+  //     </div>
+  //     <SignInButton mode='modal'>
+  //       <Button variant="secondary" size="sm">
+  //         Log in
+  //       </Button>
+  //     </SignInButton>
+  //   </div>
+  // }
 
   // Function for Search Online
   const handleSearchOnline = () => {

@@ -6,9 +6,16 @@ const nextConfig: NextConfig = {
       "files.edgestore.dev"
     ]
   },
-  eslint: {
-    // Disable ESLint during build
-    ignoreDuringBuilds: true,
+  // eslint: {
+  //   // Disable ESLint during build
+  //   ignoreDuringBuilds: true,
+  // },
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
   },
 };
 

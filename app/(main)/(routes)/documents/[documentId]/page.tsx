@@ -12,16 +12,17 @@ import { cn } from '@/lib/utils';
 
 interface DocumentIdPageProps {
   params: {
-    documentId: Id<"documents">;
+    documentId: string;
   };
-};
+}
 
 
 const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
   const isMobile = useMediaQuery(" (max-width: 786px) ");
+  const documentId = params.documentId as Id<"documents">;
 
   const document = useQuery(api.documents.getById, {
-    documentId: params.documentId
+    documentId: documentId
   });
 
   const Editor = useMemo(
@@ -36,7 +37,7 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
   // Function to update note's content 
   const onChange = (content: string) => {
     update({
-      id: params.documentId,
+      id: documentId,
       content
     });
   };

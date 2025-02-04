@@ -97,6 +97,12 @@ export function FolderItem({ id, folderIcon, active, folderExpanded, level = 0, 
         router.push(`/documents/${documentId}`);
     };
 
+    // if (!documentId) {
+    //     return <div>
+    //         not found
+    //     </div>
+    // }
+
     // Loading state
     if (documents === undefined) {
         return (
@@ -200,7 +206,7 @@ export function FolderItem({ id, folderIcon, active, folderExpanded, level = 0, 
                             {/* <GlobeIcon className="w-4 h-4 mr-2" />
                                 Publish */}
 
-                            <PublishFolder id={id} folder={folders} />
+                            <PublishFolder id={id} folder={folders} documentId={documentId}/>
                             {/* </DropdownMenuItem> */}
                             <DropdownMenuItem onClick={onFolderArchive}>
                                 <Trash className="w-4 h-4 mr-2" />

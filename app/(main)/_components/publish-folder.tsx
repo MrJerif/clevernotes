@@ -5,7 +5,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { api } from "@/convex/_generated/api";
 import { Doc, Id } from "@/convex/_generated/dataModel";
 import { useOrigin } from "@/hooks/use-origin";
-import { useMutation } from "convex/react";
+import { useMutation, useQuery } from "convex/react";
 import { CheckIcon, CopyIcon, GlobeIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -13,31 +13,53 @@ import { toast } from "sonner";
 interface PublishFolderProps {
     id: Id<"folders">
     folder: Doc<"folders">
+    documentId?: Id<"documents">
     initialData?: Doc<"documents">
 };
 
-export const PublishFolder = ({ initialData, id, folder }: PublishFolderProps) => {
+export const PublishFolder = ({ initialData, id, folder, documentId }: PublishFolderProps) => {
     const origin = useOrigin();
     const update = useMutation(api.documents.update);
     const folderUpdate = useMutation(api.documents.updateFolder);
+    const getDocs = useQuery(api.documents.getSidebar, {
+        parentDocument: documentId,
+    });
     // const folderUpdate = useMutation(api.documents.publishFolder)
 
     const [copied, setCopied] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+    // Publish all docs in folder
+    const pubishDocs = () => {
+        const getFolderDoc = getDocs?.find((doc) => doc.folderId === id);
+        if (!getFolderDoc) return;
+        const promise = update({
+            id: getFolderDoc?._id,
+            isPublished: true,
+        })
+            .finally(() => setIsSubmitting(false));
+    };
+
+    // Publish all docs in folder
+    const unPubishDocs = () => {
+        const getFolderDoc = getDocs?.find((doc) => doc.folderId === id);
+        if (!getFolderDoc) return;
+        const promise = update({
+            id: getFolderDoc?._id,
+            isPublished: false,
+        })
+            .finally(() => setIsSubmitting(false));
+    }
+
     // Function to publish note
     const onPublish = () => {
         setIsSubmitting(true);
 
-        // const promise = update({
-        //     id: initialData._id,
-        //     isPublished: true,
-        // })
-        //     .finally(() => setIsSubmitting(false));
         const promise = folderUpdate({
             id: id,
             isPublished: true,
         })
+            .then(() => pubishDocs())
             .finally(() => setIsSubmitting(false));
 
         toast.promise(promise, {
@@ -51,15 +73,11 @@ export const PublishFolder = ({ initialData, id, folder }: PublishFolderProps) =
     const onUnpublish = () => {
         setIsSubmitting(true);
 
-        // const promise = update({
-        //     id: initialData._id,
-        //     isPublished: false,
-        // })
-        //     .finally(() => setIsSubmitting(false));
         const promise = folderUpdate({
             id: id,
             isPublished: false,
         })
+            .then(() => unPubishDocs())
             .finally(() => setIsSubmitting(false));
 
         toast.promise(promise, {

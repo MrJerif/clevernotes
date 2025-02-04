@@ -10,6 +10,9 @@ import { cn } from "@/lib/utils";
 import { Title } from "@/app/(main)/_components/title";
 import { Menu } from "@/app/(main)/_components/menu";
 import { AiFeature } from "@/components/Ai-feature";
+import { SignInButton, useUser } from "@clerk/clerk-react";
+import { Button } from "@/components/ui/button";
+import { useMediaQuery } from "usehooks-ts";
 
 interface NavbarProps {
     isCollapsed: boolean;
@@ -20,6 +23,8 @@ export const NavbarPublic = ({
     isCollapsed
 }: NavbarProps) => {
     const [isAIChatOpen, setIsAIChatOpen] = useState(false);
+    const { user } = useUser();
+    const isMobile = useMediaQuery("(max-width: 768px)");
 
     const params = useParams();
     const document = useQuery(api.documents.getPublishedDoc, {
@@ -96,10 +101,26 @@ export const NavbarPublic = ({
                 </div>
             </nav>
             {/* AI Feature */}
-            <AiFeature
-                isOpen={isAIChatOpen}
-                onClose={() => setIsAIChatOpen(false)}
-            />
+            {user ? (
+                <AiFeature
+                    isOpen={isAIChatOpen}
+                    onClose={() => setIsAIChatOpen(false)}
+                />
+            ) : (
+                <div
+                    className={cn('ml-[92vw] text-muted-foreground',
+                        isMobile && 'ml-[75vw]'
+                    )}>
+                    <div>
+                        login to use ai
+                    </div>
+                    <SignInButton mode='modal'>
+                        <Button variant="secondary" size="sm">
+                            Log in
+                        </Button>
+                    </SignInButton>
+                </div>
+            )}
         </>
     )
 } 
