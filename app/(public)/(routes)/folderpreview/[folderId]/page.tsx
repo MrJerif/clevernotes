@@ -98,7 +98,7 @@ const PublicFolder = ({ params }: PublicfolderProps) => {
             {publishedDocs ? publishedDocs?.map((doc) => (
               <div key={doc._id}>
                 <div
-                  className='group min-h-[37px] text-md py-1 pr-3 w-[50%] hover:bg-primary/5
+                  className='group min-h-[37px] text-md py-1 pr-3 md:w-[50%] w-[100%] hover:bg-primary/5
     flex items-center gap-2 cursor-pointer border mb-1'
                   onClick={() => onRedirect(doc._id)}
                 >
