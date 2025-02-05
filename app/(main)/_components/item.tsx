@@ -186,7 +186,7 @@ export function Item({ id, label, onClick, icon: Icon, active, documentIcon, isS
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <div className="text-xs text-muted-foreground p-2">
-                  Last edited by: {user?.fullName ? user?.fullName : user?.emailAddresses[0].emailAddress}
+                  created by: {user?.fullName ? user?.fullName : user?.emailAddresses[0].emailAddress}
                 </div>
               </DropdownMenuContent>
             </DropdownMenu>

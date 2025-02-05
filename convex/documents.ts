@@ -480,29 +480,8 @@ export const buyTokens = mutation({
 
         // If request is from frontend
         if (identity) {
-            // throw new Error("Not Authenticated to buy tokens");
             const userId = identity.subject;
 
-            // const userId = identity.subject;
-            const userTokens = await ctx.db
-                .query("tokens")
-                .withIndex("by_user", (q) => q.eq("userId", userId))
-                .first();
-
-            // check tokens 
-            if (!userTokens?.tokenCount) {
-                throw new Error("User tokens not found");
-            }
-
-            const purchasedTokens = userTokens?.tokenCount + args.tokenCount;
-            console.log('Token Cound userTOKENS 🟢: ', userTokens.tokenCount);
-            console.log('purchasedTokens 🟢🔴🟠: ', purchasedTokens);
-            return await ctx.db.patch(userTokens._id, {
-                tokenCount: purchasedTokens
-            });
-        } else if (args.userId) {
-            // Webhook/server-authenticated request
-            // Trust the userId passed explicitly
             const price = {
                 basic: 0.50,
                 basic2: 0.80,
@@ -519,16 +498,17 @@ export const buyTokens = mutation({
                 [price.large]: 4188,
                 [price.premium]: 5235,
             }
-            const dollarPrice = args.tokenCount / 100;
+            const dollarPrice = args.tokenCount;
 
             const tokensToAdd = priceToTokens[dollarPrice]
             if (!tokensToAdd) {
                 throw new Error(`Invalid dollar price: ${dollarPrice}.`);
             }
 
+            // const userId = identity.subject;
             const userTokens = await ctx.db
                 .query("tokens")
-                .withIndex("by_user", (q) => q.eq("userId", args.userId))
+                .withIndex("by_user", (q) => q.eq("userId", userId))
                 .first();
 
             // check tokens 
@@ -536,13 +516,13 @@ export const buyTokens = mutation({
                 throw new Error("User tokens not found");
             }
 
-
             const purchasedTokens = userTokens?.tokenCount + tokensToAdd;
+            // console.log('Token Cound userTOKENS 🟢: ', userTokens.tokenCount);
+            // console.log('Token to Add🔴: ', tokensToAdd);
+            // console.log('purchasedTokens 🟢🔴🟠: ', purchasedTokens);
             return await ctx.db.patch(userTokens._id, {
                 tokenCount: purchasedTokens
             });
-        } else {
-            throw new Error("Not authenticated or valid UserId not provided!");
         }
     }
 });

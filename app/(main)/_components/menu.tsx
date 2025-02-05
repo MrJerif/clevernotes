@@ -6,7 +6,6 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { Skeleton } from "@/components/ui/skeleton";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
-import { useUser } from "@clerk/clerk-react";
 import { useMutation, useQuery } from "convex/react";
 import { DownloadIcon, MoreHorizontal, ScissorsIcon, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -39,7 +38,6 @@ interface MDContentNodeProps {
 
 export const Menu = ({ documentId, folderId }: MenuProps) => {
     const router = useRouter();
-    const { user } = useUser();
     const archive = useMutation(api.documents.archive);
     const move = useMutation(api.documents.moveNotes);
 
@@ -85,6 +83,12 @@ export const Menu = ({ documentId, folderId }: MenuProps) => {
 
     if (documents === null) {
         return <div> Not found </div>
+    }
+
+    // Format Time Creation
+    const formatTimeStamp = (timestamp: number) => {
+        const date = new Date(timestamp);
+        return date.toLocaleDateString();  // Formats it to a readable date and time based on user's locale
     }
 
     // Convert JSON content into markdown content
@@ -203,7 +207,6 @@ export const Menu = ({ documentId, folderId }: MenuProps) => {
 
         return mdContent.join("\n\n");
     };
-
 
     // Download as Markdown
     function downloadMarkdown() {
@@ -407,127 +410,6 @@ export const Menu = ({ documentId, folderId }: MenuProps) => {
         doc.save(`${sanitizedTitle}.pdf`);
     };
 
-    // Download as PDF file
-    // const downloadAsPDF = () => {
-    //     // Check if documents or content exists
-    //     if (!documents || !documents?.content) return;
-
-    //     // Create a new jsPDF instance
-    //     const pdf = new jsPDF();
-    //     // Parse the content (if it's a stringified JSON, we'll parse it)
-    //     let contentArray: ContentBlockProps[] = [];
-    //     // console.log('Documents.content: ', documents.content);
-    //     try {
-    //         contentArray = JSON.parse(documents.content); // If content is JSON string
-    //         console.log("content array : ", contentArray);
-    //     } catch (error) {
-    //         console.log("Failed to parse document contet:", error);
-    //         return;
-    //     }
-
-    //     // Set initial font size
-    //     pdf.setFontSize(12);
-
-    //     // Position for starting text in the PDF
-    //     let yPosition = 10;
-    //     const lineHeight = 7;
-    //     const margin = 10;
-
-    //     // Function to render headings
-    //     const renderHeading = (text: string) => {
-    //         if (typeof text !== "string") return;
-    //         pdf.setFontSize(14).setFont("helvetica", "bold");
-    //         const lines = pdf.splitTextToSize(text, 180);
-    //         lines.forEach((line: string) => {
-    //             pdf.text(line, margin, yPosition);
-    //             yPosition += lineHeight;
-    //         });
-    //         pdf.setFontSize(12).setFont("helvetica", "normal");
-    //     };
-
-    //     // Function to handle paragraphs
-    //     const renderParagraph = (text: string) => {
-    //         if (typeof text !== "string") return;
-    //         const lines = pdf.splitTextToSize(text, 180);
-    //         lines.forEach((line: string) => {
-    //             pdf.text(line, margin, yPosition);
-    //             yPosition += lineHeight;
-    //         });
-    //     };
-
-    //     // Function to render lists
-    //     const renderList = (items: string[], isOrdered: boolean = false) => {
-    //         if (!Array.isArray(items)) return;
-    //         items.forEach((item, index) => {
-    //             const prefix = isOrdered ? `${index + 1}.` : "•";
-    //             const lines = pdf.splitTextToSize(`${prefix} ${item}`, 180);
-    //             lines.forEach((line: string) => {
-    //                 pdf.text(line, margin, yPosition);
-    //                 yPosition += lineHeight;
-    //                 // checkPageOverflow();
-    //             });
-    //         });
-    //     };
-
-    //     // Iterate through the content array
-    //     contentArray.forEach((block: ContentBlockProps) => {
-    //         if (!block || typeof block.type !== "string" || block.value === undefined) {
-    //             console.warn("Invalid Block: ", block);
-    //             console.warn("Invalid Block.type: ", block.type);
-    //             console.warn("Invalid Block.value: ", block.value);
-    //             return;
-    //         }
-
-    //         switch (block.type) {
-    //             case "heading":
-    //                 // if (typeof block.value === "string") {
-    //                 //     pdf.setFontSize(18); // Larger font size for headers
-    //                 //     pdf.text(block.value as string, 10, yPosition);
-    //                 //     yPosition += lineHeight * 2; // Add extra space after header
-    //                 //     pdf.setFontSize(12); // Reset font size to normal for other types
-    //                 // }
-    //                 renderHeading(block.value as string);
-    //                 break;
-    //             case "paragraph": {
-    //                 // Render paragraph
-    //                 renderParagraph(block.value as string);
-    //                 break;
-    //             }
-    //             case "numberedListItem":
-    //                 renderList(block.value as string[], true);
-    //                 break;
-    //             case "bulletListItem":
-    //                 renderList(block.value as string[], false);
-    //                 break;
-    //             // case "checkListItem": 
-    //             //     // Render list
-    //             //     renderList(block.value as string[]);
-    //             //     break;
-
-    //             default: {
-    //                 console.warn("Unknown block type: ", block.type);
-    //                 // For any unknown type, just render as normal text
-    //                 // renderParagraph(block.value as string);
-    //                 break;
-    //             }
-    //         }
-
-    //         // Add new page if content exceeds the page height
-    //         if (yPosition > 280) {
-    //             pdf.addPage();
-    //             yPosition = 10;
-    //         }
-    //     });
-
-    //     // Sanitize the title for the PDF file name (remove spaces and truncate to 15 characters)
-    //     let sanitizedTitle = documents?.title.replace(/\s+/g, '_'); // Replacing spaces with underscores
-    //     sanitizedTitle = sanitizedTitle.substring(0, 15);
-    //     sanitizedTitle = sanitizedTitle || 'untitled';
-
-    //     // Save the PDF with the sanitized title
-    //     pdf.save(`${sanitizedTitle}.pdf`);
-    // };
-
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -590,7 +472,8 @@ export const Menu = ({ documentId, folderId }: MenuProps) => {
 
                 <DropdownMenuSeparator />
                 <div className="text-xs text-muted-foreground p-2">
-                    Last edited by: {user?.fullName ? user?.fullName : user?.emailAddresses[0].emailAddress}
+                    {/* Last edited by: {user?.fullName ? user?.fullName : user?.emailAddresses[0].emailAddress} */}
+                    created at: {formatTimeStamp(documents._creationTime)}
                 </div>
             </DropdownMenuContent>
         </DropdownMenu>

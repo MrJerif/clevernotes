@@ -19,7 +19,7 @@ export function TextRevealCardUse() {
                     revealText="Fees? Practically Zero."
                 >
                     <TextRevealCardTitle>
-                        Token-based pricing powered by Stripe..
+                        Token-based pricing powered by PayPal
                     </TextRevealCardTitle>
                     <TextRevealCardDescription>
                         Experience the power of AI with minimal cost..

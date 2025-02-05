@@ -181,7 +181,7 @@ const Navigation = ({ folderId }: NavigationProps) => {
                     role='button'
                     className={cn(
                         'h-6 w-6 text-muted-foreground rounded-sm hover:bg-zinc-300 dark:hover:bg-zinc-600 absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition',
-                        isMobile && "opacity-100"
+                        isMobile && "opacity-100 h-10 w-10"
                     )}
                 >
                     <ChevronsLeft className='h-6 w-6' />
