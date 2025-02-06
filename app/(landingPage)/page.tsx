@@ -5,13 +5,14 @@ import { StarsBackground } from "./_components/stars-bg";
 import { FloatingNavUse } from "./_components/floating-nav-use";
 import { GeminiEffectUse } from "./_components/gemini-effect-use";
 import { TextRevealCardUse } from "./_components/textReveal-use";
-import {Features} from "./_components/features";
+import { Features } from "./_components/features";
+import Footer from "./_components/footer";
 
 export default function Home() {
   return (
     <div className="min-h-full flex flex-col">
       <div className="flex flex-col items-center justify-center
-        md:justify-start text-center gap-y-8 flex-1 px-6 pb-10">
+        md:justify-start text-center gap-y-8 flex-1 px-6">
         <StarsBackground />
         <ShootingStars />
 
@@ -22,6 +23,7 @@ export default function Home() {
         {/* <StickyScroll content={content} /> */}
         <TextRevealCardUse />
       </div>
+      <Footer />
     </div>
   )
 }

@@ -116,7 +116,7 @@ export const TrashBox = ({ folderId }: folderProps) => {
     }
 
     return (
-        <div className="text-sm">
+        <div className="text-sm dark:bg-black bg-gray-300 rounded-xl">
             <div className="flex items-center gap-x-1 p-2">
                 <Search className="h-4 w-4" />
                 <Input
@@ -166,7 +166,7 @@ export const TrashBox = ({ folderId }: folderProps) => {
                                 role="button"
                                 onClick={() => onClick(document._id)}
                                 className="text-base rounded-sm w-full hover:bg-primary/5 flex items-center
-                        text-primary justify-between dark:bg-zinc-800 bg-gray-200"
+                        text-primary justify-between dark:bg-zinc-800 bg-gray-200 my-1"
                             >
                                 <div>
                                     <span className="truncate pl-2">
@@ -218,7 +218,7 @@ export const TrashBox = ({ folderId }: folderProps) => {
                             key={folder._id}
                             role="button"
                             className="tex-sm rounded-sm w-full hover:bg-primary/5 flex items-center
-                        text-primary justify-between dark:bg-zinc-800 bg-gray-200"
+                        text-primary justify-between dark:bg-zinc-800 bg-gray-200 my-1"
                         >
                             <span className="truncate pl-2">
                                 {folder.title}

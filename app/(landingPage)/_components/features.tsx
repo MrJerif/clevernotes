@@ -25,6 +25,7 @@ export function Features() {
                         height={1400}
                         className="object-contain rounded-lg border video-hover1 transform group-hover:transition duration-500 ease-in-out group-hover:scale-105 group-hover:-rotate-1"
                         loop
+                        preload="auto"
                     />
                     <div className="text relative z-50">
                         <h1 className="font-bold text-xl md:text-3xl dark:text-gray-50 text-zinc-800 relative">
@@ -51,6 +52,7 @@ export function Features() {
                         height={1400}
                         className="object-contain rounded-lg border video-hover2 transform group-hover:transition duration-500 ease-in-out group-hover:scale-105 group-hover:rotate-1"
                         loop
+                        preload="auto"
                     />
                     <div className="text relative z-50">
                         <h1 className="font-bold text-xl md:text-3xl dark:text-gray-50 text-zinc-800 relative">
@@ -81,6 +83,7 @@ export function Features() {
                         height={1400}
                         className="video-hover3 object-contain rounded-lg border transition-transform duration-500 ease-in-out transform group-hover:rotate-3 group-hover:translate-x-2 group-hover:translate-y-1"
                         loop
+                        preload="auto"
                     />
                     <div className="text relative z-50">
                         <h1 className="font-bold text-xl md:text-3xl dark:text-gray-50 text-zinc-800 relative">
@@ -107,6 +110,7 @@ export function Features() {
                         height={1400}
                         className="video-hover4 object-contain rounded-lg border transition-transform duration-500 ease-in-out transform group-hover:-rotate-3 group-hover:translate-x-2 group-hover:translate-y-1"
                         loop
+                        preload="auto"
                     />
                     <div className="text relative z-50">
                         <h1 className="font-bold text-xl md:text-3xl dark:text-gray-50 text-zinc-800 relative">
@@ -132,11 +136,12 @@ export function Features() {
                     }}
                 >
                     <video
-                        src='/feature1.webm'
+                        src='/feature-ai.webm'
                         width="full"
                         height={1400}
                         className="video-hover5 object-contain rounded-lg border transition-all duration-500 ease-in-out transform group-hover:translate-y-[-10px] group-hover:scale-105 group-hover:rotate-[1deg]"
                         loop
+                        preload="auto"
                     />
                     <div className="text relative z-50">
                         <h1 className="font-bold text-xl md:text-3xl dark:text-gray-50 text-zinc-800 relative">
@@ -167,6 +172,7 @@ export function Features() {
                         height={1400}
                         className="video-hover6 object-contain rounded-lg border transition-all duration-500 ease-in-out transform group-hover:translate-y-[-10px] group-hover:scale-105 group-hover:-rotate-[1deg]"
                         loop
+                        preload="auto"
                     />
                     <div className="text relative z-50">
                         <h1 className="font-bold text-xl md:text-3xl dark:text-gray-50 text-zinc-800 relative">
@@ -180,8 +186,8 @@ export function Features() {
             </div>
 
             <Button asChild className="mb-10">
-                <Link href="https://github.com/MrJerif/clevernotes/tree/main">
-                    Under the Hood
+                <Link href="https://github.com/MrJerif/clevernotes/blob/main/README.md">
+                    Know More...
                 </Link>
             </Button>
         </>

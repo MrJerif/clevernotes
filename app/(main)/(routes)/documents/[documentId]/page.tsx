@@ -65,7 +65,7 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
 
   return (
       <div className={cn('pb-40',
-        isMobile && 'pb-80'
+        isMobile && 'pb-96'
       )}>
         <Cover url={document.coverImage} />
         <div className='md:max-w-3xl lg:max-w-4xl mx-auto'>

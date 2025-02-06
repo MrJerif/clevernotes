@@ -70,7 +70,7 @@ const AddNote = ({ folderId }: AddNoteProps) => {
             </PopoverTrigger>
             <PopoverContent
                 side={isMobile ? "bottom" : "right"}
-                className='w-80 flex flex-col dark:bg-black bg-gray-500 p-2 rounded-xl items-center'
+                className='w-80 flex flex-col dark:bg-black bg-gray-300 p-2 rounded-xl items-center'
             >
                 <h2 className='m-2 text-lg font-semibold'>Select Folder</h2>
                 <div className='w-[94%]'>
