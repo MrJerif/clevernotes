@@ -1,36 +1,162 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CleverNotes - A Smarter Way to Take Notes 📝🚀
 
-## Getting Started
+This README file was created in CleverNotes! ✨
 
-First, run the development server:
+## 🏆 Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+CleverNotes is an AI-powered note-taking SaaS platform designed to enhance productivity and organization. Whether you're a student, professional, or researcher, CleverNotes helps you capture, organize, and retrieve information effortlessly. With AI-driven insights and sharing features, managing your notes has never been easier!
+
+### ✨ Key Features
+
+- 📝 Effortless Note Creation: Quickly create notes, README files, and more.
+
+- 📂 Organized Storage: Structure notes with folders and sub-notes for easy retrieval.
+
+- 🔍 Powerful Search: Find notes instantly with an advanced search functionality.
+
+- 🤖 AI-Powered Insights: Ask questions about your notes and receive intelligent answers.
+
+- 🌐 Web-Based AI Assistance: Explore broader knowledge using AI that searches both your notes and the web.
+
+- 📤 Collaboration & Sharing: Share notes and folders with colleagues, friends, or clients via unique links.
+
+- 📄 Multiple Export Formats: Download notes as PDF or Markdown for offline access.
+
+- 🖼️ File Upload & Storage: Upload and store images, files, and videos effortlessly.
+
+- 📊 Multi-File Analysis: AI synthesizes insights across multiple selected files.
+
+- 🔒 Secure & Reliable: Seamless authentication, file storage, and secure payment handling.
+
+Additional Features
+
+Real-time database 🔗
+
+Light and Dark mode 🌓
+
+Infinite children documents 🌲
+
+Trash can & soft delete 🗑️
+
+File upload
+
+File deletion
+
+File replacement
+
+Icons for each document (changes in real-time) 🌠
+
+Expandable sidebar ➡️🔀⬅️
+
+Full mobile responsiveness 📱
+
+Fully collapsable sidebar ↕️
+
+Landing page 🛬
+
+Cover image of each document 🖼️
+
+Recover deleted files 🔄📄
+
+🛠️ Tech Stack
+
+## CleverNotes leverages a modern tech stack to ensure speed, scalability, and security.
+
+### Frontend
+
+- ⚡ Framework: Next.js (TypeScript)
+
+- 🎨 UI Library: ShadCN (Component Library)
+
+- 🎨 Styling: Tailwind CSS, Framer Motion, Aceternity UI
+
+- 📦 State Management: Zustand
+
+- 📂 File Upload: EdgeStore
+
+- 📝 Editor: BlockNote (Text Editor)
+
+- 😊 Emoji Support: emoji-picker-react
+
+- 🖊️ React Libraries:
+
+### Backend & Database
+
+- 🗄️ Convex: Backend & Database
+
+- 🧠 LangChain: AI-powered document analysis
+
+- 🤖 Gemini API: AI assistant for note insights
+
+- 🚀 Vercel AI SDK: AI model integrations
+
+- 📑 PDF Parsing: pdf-parse for extracting content from documents
+
+### 🔑 Authentication & 💳 Payments
+
+- 🔐 Authentication: Clerk
+
+- 💰 Payments: PayPal
+
+## 🚀 Installation & Setup
+
+Follow these steps to set up and run CleverNotes locally:
+
+### 1️⃣ Clone the Repository
+
+```
+git clone https://github.com/mrjerif/clevernotes.git
+cd clevernotes
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2️⃣ Install Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
 
-## Learn More
+### 3️⃣ Set Up Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+Create a .env.local file and add the necessary environment variables:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+CONVEX_DEPLOYMENT=<your_project>
+NEXT_PUBLIC_CONVEX_URL=<convex_url>
+CLERK_SECRET_KEY=<secret_key>
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=<your_clerk_api_key>
+NEXT_PUBLIC_PAYPAL_CLIENT_ID=<your_stripe_secret_key>
+EDGE_STORE_ACCESS_KEY=<your_edge_store_access_key>
+EDGE_STORE_SECRET_KEY=<your_edge_store_secret_key>
+GEMINI_API_KEY=<your_gemini_api_key>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
 
-## Deploy on Vercel
+### 4️⃣ Run the Development Server
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+npm run dev
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+
+### 5️⃣ Start Convex Backend
+
+```
+npx convex dev
+
+```
+
+### 6️⃣ Deploy to Vercel
+
+```
+vercel
+
+```
+
+## 🤝 Contribution
+
+We welcome contributions! If you’d like to improve CleverNotes, feel free to fork the repository, make your changes, and submit a pull request.
+
+🚀 Happy Note-Taking with CleverNotes! 📝✨
+
