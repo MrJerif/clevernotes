@@ -28,7 +28,7 @@ CleverNotes is an AI-powered note-taking SaaS platform designed to enhance produ
 
 - 🔒 Secure & Reliable: Seamless authentication, file storage, and secure payment handling.
 
-Additional Features
+### Additional Features
 
 Real-time database 🔗
 
@@ -91,6 +91,10 @@ Recover deleted files 🔄📄
 - 🚀 Vercel AI SDK: AI model integrations
 
 - 📑 PDF Parsing: pdf-parse for extracting content from documents
+
+- 📑 DOCX Parsing: mammoth for extracting content from documents
+
+- 📑 CSV Parsing: csv-parse for extracting content from documents
 
 ### 🔑 Authentication & 💳 Payments
 
